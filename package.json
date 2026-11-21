@@ -1,0 +1,125 @@
+{
+  "name": "@wblxr408/field-distiller-runtime",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24.10"
+  },
+  "exports": "./index.mjs",
+  "files": [
+    "*.mjs",
+    "skills",
+    "client",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "agnes": {
+    "provides": [
+      "tool",
+      "skills",
+      "ui",
+      "service",
+      "bundle"
+    ],
+    "plugins": [
+      {
+        "id": "ext:@wblxr408/field-distiller-runtime/main",
+        "export": "main",
+        "apiRange": "^5.0.0",
+        "inject": [
+          "tools",
+          "services",
+          "skills"
+        ],
+        "optionalInject": [
+          "skills"
+        ],
+        "services": [
+          "fde.distiller.list",
+          "fde.distiller.distill",
+          "fde.distiller.promote"
+        ],
+        "capabilities": {
+          "store": true,
+          "ui": true,
+          "tools": {
+            "prefix": "fde_distill_",
+            "names": [
+              "fde_distill_analyze",
+              "fde_distill_generate_skill",
+              "fde_distill_generate_plugin",
+              "fde_distill_library"
+            ]
+          }
+        },
+        "metadata": {
+          "displayName": "Field-to-Asset Distiller",
+          "summary": "Prune resolved troubleshooting traces into anti-patterns, canonical SKILL.md playbooks, and reviewable candidate AGH plugins.",
+          "description": "Transforms successful FDE firefighting sessions into standardized SKILL.md files and self-contained AGH plugin scaffolds (package.json, index.mjs, contract test) tracked in a reusable asset library.",
+          "locales": {
+            "zh-CN": {
+              "displayName": "“从救火到资产”经验蒸馏器",
+              "summary": "从成功排障轨迹中剔除试错弯路，自动蒸馏为标准 SKILL.md 与可审阅发布的候选 AGH 插件草稿。",
+              "description": "自动分析排障会话中的失败踩坑与最终成功路径，生成含防呆与拒答约束的 Skill 文档或标准 AGH 插件源码包，实现跨项目复用复利。"
+            }
+          }
+        }
+      }
+    ],
+    "hostProvidedExternals": {
+      "@agnes/plugin-runtime": "0.0.0",
+      "@agnes/extension-api": "^5.0.0",
+      "@sinclair/typebox": "0.34.33"
+    },
+    "clientDescriptors": [
+      {
+        "rowId": "ext:@wblxr408/field-distiller-runtime/main",
+        "path": "./client/agnes.client.json"
+      }
+    ],
+    "bundles": {
+      "distiller": {
+        "presets": {
+          "distiller": {
+            "name": "distiller",
+            "extends": "standard"
+          }
+        },
+        "profile": {
+          "tools": [
+            "fde_distill_analyze",
+            "fde_distill_generate_skill",
+            "fde_distill_generate_plugin",
+            "fde_distill_library"
+          ],
+          "skills": [
+            "fde-field-distiller"
+          ]
+        },
+        "launch": {
+          "title": {
+            "en": "Field-to-Asset Distiller",
+            "zh-CN": "现场经验蒸馏助手"
+          },
+          "description": {
+            "en": "Distill a resolved troubleshooting trace into a reusable Skill or candidate plugin.",
+            "zh-CN": "将成功排障记录提炼为可复用 Skill 或候选插件包。"
+          },
+          "preset": "distiller",
+          "pages": [
+            "distiller-library"
+          ],
+          "prompt": {
+            "text": {
+              "en": "List existing distilled assets and inspect any troubleshooting trace ready to turn into a Skill.",
+              "zh-CN": "列出已有经验资产，并整理准备沉淀为 Skill 的排障轨迹。"
+            },
+            "mode": "draft"
+          }
+        }
+      }
+    }
+  }
+}

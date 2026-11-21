@@ -1,0 +1,28 @@
+{
+  "client": {
+    "id": "distiller-library",
+    "lifetime": "profile",
+    "entry": "./index.js",
+    "styles": [],
+    "slots": [],
+    "services": ["fde.distiller.list", "fde.distiller.distill", "fde.distiller.promote"],
+    "projections": [],
+    "publicConfig": {
+      "label": "Field-to-Asset Distiller Library"
+    },
+    "homeEntries": [
+      {
+        "id": "distiller-library",
+        "placement": "secondary",
+        "navigation": {
+          "title": "Asset Distiller",
+          "titles": {
+            "zh-CN": "经验蒸馏资产库"
+          },
+          "icon": "plugin",
+          "order": 45
+        }
+      }
+    ]
+  }
+}
