@@ -1,0 +1,65 @@
+{
+  "name": "@wblxr408/field-distiller",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "description": "Configuration bundle for an independently authorized runtime.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wblxr408/agh-plugin-field-distiller"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "agh.market.json"
+  ],
+  "agnes": {
+    "provides": [
+      "bundle"
+    ],
+    "metadata": {
+      "displayName": "Troubleshooting Skill Distiller",
+      "summary": "Configuration bundle for an independently authorized runtime.",
+      "description": "Extract successful steps and failed approaches from a troubleshooting trace and draft a reviewable SKILL.md.",
+      "locales": {
+        "zh-CN": {
+          "displayName": "排障记录转 Skill",
+          "summary": "配置 Bundle，配合单独配置和授权的运行组件使用。",
+          "description": "从排障轨迹提取成功路径、失败原因和证据，生成待审核的 SKILL.md。"
+        }
+      }
+    },
+    "bundles": {
+      "workflow": {
+        "profile": {
+          "toolPolicy": {
+            "readOnly": true
+          }
+        },
+        "presets": {
+          "field-distiller": {
+            "name": "field-distiller",
+            "extends": "standard"
+          }
+        },
+        "launch": {
+          "title": {
+            "en": "Troubleshooting Skill Distiller Setup",
+            "zh-CN": "排障记录转 Skill配置说明"
+          },
+          "description": {
+            "en": "Extract successful steps and failed approaches from a troubleshooting trace and draft a reviewable SKILL.md.",
+            "zh-CN": "从排障轨迹提取成功路径、失败原因和证据，生成待审核的 SKILL.md。"
+          },
+          "preset": "field-distiller",
+          "prompt": {
+            "mode": "draft",
+            "text": {
+              "en": "Extract successful steps and failed approaches from a troubleshooting trace and draft a reviewable SKILL.md.",
+              "zh-CN": "请说明如何使用已经单独安装的排障记录转 Skill运行组件。从排障轨迹提取成功路径、失败原因和证据，生成待审核的 SKILL.md。"
+            }
+          }
+        }
+      }
+    }
+  }
+}
